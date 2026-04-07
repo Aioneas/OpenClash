@@ -11,7 +11,6 @@ for f in \
   openclash/custom/aioneas_openclash_overwrite.rb \
   openclash/custom/openclash_custom_rules.list \
   openclash/custom/openclash_custom_rules_2.list \
-  ruleset/Link.yaml \
   public/openclash.public.reference.yaml
  do
   [ -f "$f" ] || { echo "missing: $f"; exit 1; }
@@ -28,8 +27,9 @@ else
 fi
 
 echo "[4/4] basic content checks"
-grep -q 'Aioneas/OpenClash/main/ruleset/Link.yaml' openclash/custom/aioneas_openclash_overwrite.rb
+grep -q 'https://raw.githubusercontent.com/Aioneas/Surge/main/List/link.clash.yaml' openclash/custom/aioneas_openclash_overwrite.rb
+grep -q 'https://raw.githubusercontent.com/Aioneas/Surge/main/List/apple.clash.yaml' openclash/custom/aioneas_openclash_overwrite.rb
 grep -q 'RULE-SET,Link,Link' openclash/custom/openclash_custom_rules.list
-grep -q 'payload:' ruleset/Link.yaml
+grep -q 'RULE-SET,Apple,Apple' openclash/custom/openclash_custom_rules.list
 
 echo "OK: repository validation passed"

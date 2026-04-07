@@ -27,8 +27,6 @@ openclash/
     aioneas_openclash_overwrite.rb     # 实际覆写逻辑
     openclash_custom_rules.list        # 主规则顺序
     openclash_custom_rules_2.list      # 预留扩展规则
-ruleset/
-  Link.yaml                            # 自定义 Clash 规则集
 scripts/
   validate_repo.sh                     # 本地校验仓库文件
   sync_to_router.sh                    # 一键同步到路由器
@@ -36,6 +34,8 @@ public/
   openclash.public.reference.yaml      # 脱敏参考配置
 README.md
 ```
+
+> 说明：规则内容主源已统一迁移到 `Aioneas/Surge/List/*.list` 与 `*.clash.yaml`，OpenClash 仓库只维护覆写逻辑、策略组与规则顺序。
 
 ---
 
@@ -162,6 +162,7 @@ OpenClash 在处理配置时会自动调用：
 如果只是新增规则顺序：
 
 - 优先改 `openclash/custom/openclash_custom_rules.list`
+- 若规则内容属于某个自托管规则镜像（如 Apple / YouTube / Google），优先回到 `Aioneas/Surge/List/*.list` 与对应 `*.clash.yaml` 主源维护
 
 ### 新增自定义规则集
 
