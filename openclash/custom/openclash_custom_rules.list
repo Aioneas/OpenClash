@@ -1,0 +1,28 @@
+rules:
+  - DOMAIN,a.115cdn.de,DIRECT # 115线路二直连
+  - DOMAIN-SUFFIX,115cdn.de,DIRECT # 115全域名后缀直连
+  - RULE-SET,Direct,DIRECT
+  - RULE-SET,YouTube,YouTube
+  - RULE-SET,Disney,Disney
+  - RULE-SET,HBOMax,HBOMax
+  - RULE-SET,Netflix,Netflix
+  - RULE-SET,Bahamut,Bahamut
+  - RULE-SET,BiliBili,BiliBili
+  - RULE-SET,Spotify,Spotify
+  - RULE-SET,Steam,Steam
+  - RULE-SET,Telegram,Telegram
+  - RULE-SET,Google,Google
+  - RULE-SET,Microsoft,Microsoft
+  - RULE-SET,GitHub,GitHub
+  - RULE-SET,OpenAI,OpenAI
+  - RULE-SET,Claude,Claude
+  - RULE-SET,PayPal,PayPal
+  - RULE-SET,Link,Link
+  - RULE-SET,Apple,Apple
+  - RULE-SET,Speedtest,Speedtest
+  - RULE-SET,Global,Proxies
+  - RULE-SET,Pixiv,JP
+  - RULE-SET,China,DIRECT
+  - RULE-SET,Lan,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,Final

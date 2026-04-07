@@ -1,0 +1,82 @@
+mixed-port: 7893
+allow-lan: false
+mode: rule
+log-level: info
+ipv6: false
+proxies: []
+proxy-groups:
+  - name: Proxies
+    type: select
+    proxies: [HK, JP, SG, TW, US]
+  - name: Final
+    type: select
+    proxies: [Proxies, DIRECT]
+  - name: Google
+    type: select
+    proxies: [Proxies, HK, JP, SG, TW, US]
+  - name: Apple
+    type: select
+    proxies: [Proxies, DIRECT, HK, JP, SG, TW, US]
+  - name: OpenAI
+    type: select
+    proxies: [Proxies, HK, JP, SG, TW, US]
+  - name: Claude
+    type: select
+    proxies: [Proxies, HK, JP, SG, TW, US]
+  - name: YouTube
+    type: select
+    proxies: [Proxies, HK, JP, SG, TW, US]
+  - name: Netflix
+    type: select
+    proxies: [Proxies, HK, JP, SG, TW, US]
+  - name: Disney
+    type: select
+    proxies: [Proxies, HK, JP, SG, TW, US]
+  - name: HBOMax
+    type: select
+    proxies: [Proxies, HK, JP, SG, TW, US]
+  - name: Bahamut
+    type: select
+    proxies: [Proxies, HK, TW]
+  - name: BiliBili
+    type: select
+    proxies: [DIRECT, HK, TW]
+  - name: Spotify
+    type: select
+    proxies: [Proxies, DIRECT, HK, JP, SG, TW, US]
+  - name: Steam
+    type: select
+    proxies: [Proxies, DIRECT, HK, JP, SG, TW, US]
+  - name: Telegram
+    type: select
+    proxies: [Proxies, HK, JP, SG, TW, US]
+  - name: Microsoft
+    type: select
+    proxies: [Proxies, DIRECT, HK, JP, SG, TW, US]
+  - name: GitHub
+    type: select
+    proxies: [Proxies, DIRECT, HK, JP, SG, TW, US]
+  - name: PayPal
+    type: select
+    proxies: [Proxies, DIRECT, HK, JP, SG, TW, US]
+  - name: Link
+    type: select
+    proxies: [PayPal, Proxies, DIRECT, HK, JP, SG, TW, US]
+  - name: Speedtest
+    type: select
+    proxies: [DIRECT, Proxies, HK, JP, SG, TW, US]
+  - name: HK
+    type: select
+    proxies: [DIRECT]
+  - name: JP
+    type: select
+    proxies: [DIRECT]
+  - name: SG
+    type: select
+    proxies: [DIRECT]
+  - name: TW
+    type: select
+    proxies: [DIRECT]
+  - name: US
+    type: select
+    proxies: [DIRECT]
