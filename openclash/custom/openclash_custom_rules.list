@@ -1,6 +1,8 @@
 rules:
   - DOMAIN,a.115cdn.de,DIRECT # 115线路二直连
   - DOMAIN-SUFFIX,115cdn.de,DIRECT # 115全域名后缀直连
+  - RULE-SET,AppleProxy,Apple
+  - RULE-SET,Apple,Apple
   - RULE-SET,Direct,DIRECT
   - RULE-SET,YouTube,YouTube
   - RULE-SET,Disney,Disney
