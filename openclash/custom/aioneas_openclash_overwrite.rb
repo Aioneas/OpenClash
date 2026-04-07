@@ -59,8 +59,7 @@ groups << {'name' => 'Speedtest', 'type' => 'select', 'proxies' => ['DIRECT', 'P
 end
 value['proxy-groups'] = groups
 
-value['rule-providers'] ||= {}
-value['rule-providers'].merge!(
+value['rule-providers'] = {
   'YouTube' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/YouTube.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/youtube.clash.yaml','interval'=>86400},
   'Disney' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Disney.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/disney.clash.yaml','interval'=>86400},
   'HBOMax' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/HBOMax.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/hbomax.clash.yaml','interval'=>86400},
@@ -83,7 +82,7 @@ value['rule-providers'].merge!(
   'Pixiv' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Pixiv.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/pixiv.clash.yaml','interval'=>86400},
   'China' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/China.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/china.clash.yaml','interval'=>86400},
   'Lan' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Lan.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/lan.clash.yaml','interval'=>86400}
-)
+}
 
 custom_rule_file = '/etc/openclash/custom/openclash_custom_rules.list'
 if File.exist?(custom_rule_file)
