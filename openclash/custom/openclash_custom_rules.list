@@ -1,7 +1,7 @@
 rules:
   - DOMAIN,a.115cdn.de,DIRECT # 115线路二直连
   - DOMAIN-SUFFIX,115cdn.de,DIRECT # 115全域名后缀直连
-  # Apple campus-network overrides: place before Apple/Direct rule-sets
+  # Apple campus-network overrides: place before Apple / China / GEOIP fallback
   - DOMAIN,gateway.icloud.com,Apple
   - DOMAIN,setup.icloud.com,Apple
   - DOMAIN-SUFFIX,acsegateway.icloud.com,Apple
@@ -16,7 +16,6 @@ rules:
   - DOMAIN-SUFFIX,ls.apple.com,Apple
   - DOMAIN-SUFFIX,mzstatic.com,Apple
   - RULE-SET,Apple,Apple
-  - RULE-SET,Direct,DIRECT
   - RULE-SET,YouTube,YouTube
   - RULE-SET,Disney,Disney
   - RULE-SET,HBOMax,HBOMax
