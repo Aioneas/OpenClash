@@ -1,7 +1,20 @@
 rules:
   - DOMAIN,a.115cdn.de,DIRECT # 115线路二直连
   - DOMAIN-SUFFIX,115cdn.de,DIRECT # 115全域名后缀直连
-  - RULE-SET,AppleProxy,Apple
+  # Apple campus-network overrides: place before Apple/Direct rule-sets
+  - DOMAIN,gateway.icloud.com,Apple
+  - DOMAIN,setup.icloud.com,Apple
+  - DOMAIN-SUFFIX,acsegateway.icloud.com,Apple
+  - DOMAIN,mask-api.icloud.com,Apple
+  - DOMAIN,bag.itunes.apple.com,Apple
+  - DOMAIN,entitlements.itunes.apple.com,Apple
+  - DOMAIN,is1-ssl.mzstatic.com,Apple
+  - DOMAIN,gsa.apple.com,Apple
+  - DOMAIN,ocsp2.apple.com,Apple
+  - DOMAIN-SUFFIX,icloud.com,Apple
+  - DOMAIN-SUFFIX,itunes.apple.com,Apple
+  - DOMAIN-SUFFIX,ls.apple.com,Apple
+  - DOMAIN-SUFFIX,mzstatic.com,Apple
   - RULE-SET,Apple,Apple
   - RULE-SET,Direct,DIRECT
   - RULE-SET,YouTube,YouTube
@@ -20,7 +33,6 @@ rules:
   - RULE-SET,Claude,Claude
   - RULE-SET,PayPal,PayPal
   - RULE-SET,Link,Link
-  - RULE-SET,Apple,Apple
   - RULE-SET,Speedtest,Speedtest
   - RULE-SET,Global,Proxies
   - RULE-SET,Pixiv,JP

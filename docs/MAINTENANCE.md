@@ -8,6 +8,11 @@
 
 - `openclash/custom/openclash_custom_rules.list`
 
+说明：
+
+- 少量上游规则缺口（例如校园网下个别 Apple 域名）优先直接写在 `openclash_custom_rules.list` 顶部；
+- 只有当自定义域名很多、已经形成独立服务时，才考虑新增单独 `ruleset/*.yaml`。
+
 ### 情况 2：新增独立服务规则集
 
 按顺序操作：

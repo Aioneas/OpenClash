@@ -61,7 +61,6 @@ value['proxy-groups'] = groups
 
 value['rule-providers'] ||= {}
 value['rule-providers'].merge!(
-  'AppleProxy' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/AppleProxy.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/OpenClash/main/ruleset/Apple.Proxy.yaml','interval'=>86400},
   'Direct' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Direct.yaml','url'=>'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct.yaml','interval'=>86400},
   'YouTube' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/YouTube.yaml','url'=>'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml','interval'=>86400},
   'Disney' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Disney.yaml','url'=>'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Disney/Disney.yaml','interval'=>86400},
