@@ -77,7 +77,7 @@ value['rule-providers'].merge!(
   'Claude' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Claude.yaml','url'=>'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Claude/Claude.yaml','interval'=>86400},
   'PayPal' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/PayPal.yaml','url'=>'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PayPal/PayPal.yaml','interval'=>86400},
   'Link' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Link.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/OpenClash/main/ruleset/Link.yaml','interval'=>86400},
-  'Apple' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Apple.yaml','url'=>'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple.yaml','interval'=>86400},
+  'Apple' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Apple.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/apple.clash.yaml','interval'=>86400},
   'Speedtest' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Speedtest.yaml','url'=>'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Speedtest/Speedtest.yaml','interval'=>86400},
   'Global' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Global.yaml','url'=>'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Global/Global.yaml','interval'=>86400},
   'Pixiv' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Pixiv.yaml','url'=>'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Pixiv/Pixiv.yaml','interval'=>86400},

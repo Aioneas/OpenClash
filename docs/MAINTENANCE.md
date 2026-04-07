@@ -17,11 +17,12 @@
 
 按顺序操作：
 
-1. 在 `ruleset/` 新增 `XXX.yaml`
-2. 在 `openclash/custom/aioneas_openclash_overwrite.rb` 增加对应 `rule-provider`
-3. 在 `openclash/custom/openclash_custom_rules.list` 插入：
+1. 优先在 `Aioneas/Surge` 维护主规则源（如 `List/apple.list` / `List/apple.clash.yaml`）
+2. 在 `ruleset/` 新增 `XXX.yaml` 仅用于 OpenClash 专属规则时再单独放这里
+3. 在 `openclash/custom/aioneas_openclash_overwrite.rb` 增加对应 `rule-provider`
+4. 在 `openclash/custom/openclash_custom_rules.list` 插入：
    - `RULE-SET,XXX,对应分组`
-4. 运行：
+5. 运行：
    - `./scripts/validate_repo.sh`
    - `./scripts/sync_to_router.sh <ip> <user> <password>`
 

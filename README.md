@@ -155,6 +155,8 @@ OpenClash 在处理配置时会自动调用：
 
 后续如果要把 Surge 新增分流同步到 OpenClash，建议按以下原则维护：
 
+- **规则主源优先放在 `Aioneas/Surge`**：若某个上游规则集需要补丁（如 Apple），优先在 Surge 仓库自托管，再由 OpenClash 复用其 Clash 版输出。
+
 ### 规则新增
 
 如果只是新增规则顺序：
