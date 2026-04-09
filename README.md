@@ -104,6 +104,7 @@ README.md
 - `/etc/openclash/custom/aioneas_openclash_overwrite.rb`
 - `/etc/openclash/custom/openclash_custom_rules.list`
 - `/etc/openclash/custom/openclash_custom_rules_2.list`
+- `/etc/openclash/custom/aioneas_warp_zt.yaml`（若本地存在私有文件）
 
 ### 3. 重启 OpenClash
 
@@ -113,6 +114,18 @@ OpenClash 在处理配置时会自动调用：
 - 然后由它调用 `aioneas_openclash_overwrite.rb`
 
 覆写后的最终配置会在 OpenClash 运行配置中生效。
+
+### 4.（可选）启用本地私有 Zero Trust/WARP 节点
+
+在仓库本地创建（或修改）：
+
+- `openclash/custom/aioneas_warp_zt.private.yaml`
+
+同步脚本会自动上传到路由器：
+
+- `/etc/openclash/custom/aioneas_warp_zt.yaml`
+
+上传后覆写脚本会自动把 `WARP-ZT` 注入配置，并启用 `ZeroTrust` 策略组。
 
 ---
 

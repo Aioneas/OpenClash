@@ -33,6 +33,13 @@ for f in \
     "$f" "$SSH_USER@$ROUTER_IP:/etc/openclash/custom/$(basename "$f")"
 done
 
+# optional private warp file
+if [ -f "openclash/custom/aioneas_warp_zt.private.yaml" ]; then
+  echo "[sync] upload optional private warp node file"
+  sshpass -p "$SSH_PASS" scp -O -o StrictHostKeyChecking=no -o ConnectTimeout=8 \
+    "openclash/custom/aioneas_warp_zt.private.yaml" "$SSH_USER@$ROUTER_IP:/etc/openclash/custom/aioneas_warp_zt.yaml"
+fi
+
 echo "[sync] verify and restart openclash"
 sshpass -p "$SSH_PASS" ssh -o StrictHostKeyChecking=no -o ConnectTimeout=8 "$SSH_USER@$ROUTER_IP" '
 set -e
