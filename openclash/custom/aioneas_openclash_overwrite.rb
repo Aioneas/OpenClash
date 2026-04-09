@@ -30,35 +30,30 @@ region_patterns.each do |region, pattern|
 end
 
 groups = []
-has_zerotrust = all_proxy_names.include?('WARP-ZT')
-core_choices = has_zerotrust ? ['ZeroTrust', 'Proxies', 'HK', 'JP', 'SG', 'TW', 'US'] : ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']
-core_direct_choices = has_zerotrust ? ['ZeroTrust', 'Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US'] : ['Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US']
-
 groups << {
   'name' => 'Proxies',
   'type' => 'select',
   'proxies' => (['HK', 'JP', 'SG', 'TW', 'US'] + all_proxy_names).uniq
 }
-groups << {'name' => 'ZeroTrust', 'type' => 'select', 'proxies' => ['WARP-ZT']} if has_zerotrust
-groups << {'name' => 'Final', 'type' => 'select', 'proxies' => (has_zerotrust ? ['ZeroTrust', 'Proxies', 'DIRECT'] : ['Proxies', 'DIRECT'])}
-groups << {'name' => 'Google', 'type' => 'select', 'proxies' => core_choices}
-groups << {'name' => 'Apple', 'type' => 'select', 'proxies' => core_direct_choices}
-groups << {'name' => 'OpenAI', 'type' => 'select', 'proxies' => core_choices}
-groups << {'name' => 'Claude', 'type' => 'select', 'proxies' => core_choices}
-groups << {'name' => 'YouTube', 'type' => 'select', 'proxies' => core_choices}
-groups << {'name' => 'Netflix', 'type' => 'select', 'proxies' => core_choices}
-groups << {'name' => 'Disney', 'type' => 'select', 'proxies' => core_choices}
-groups << {'name' => 'HBOMax', 'type' => 'select', 'proxies' => core_choices}
+groups << {'name' => 'Final', 'type' => 'select', 'proxies' => ['Proxies', 'DIRECT']}
+groups << {'name' => 'Google', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
+groups << {'name' => 'Apple', 'type' => 'select', 'proxies' => ['Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US']}
+groups << {'name' => 'OpenAI', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
+groups << {'name' => 'Claude', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
+groups << {'name' => 'YouTube', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
+groups << {'name' => 'Netflix', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
+groups << {'name' => 'Disney', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
+groups << {'name' => 'HBOMax', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
 groups << {'name' => 'Bahamut', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'TW']}
 groups << {'name' => 'BiliBili', 'type' => 'select', 'proxies' => ['DIRECT', 'HK', 'TW']}
-groups << {'name' => 'Spotify', 'type' => 'select', 'proxies' => core_direct_choices}
-groups << {'name' => 'Steam', 'type' => 'select', 'proxies' => core_direct_choices}
-groups << {'name' => 'Telegram', 'type' => 'select', 'proxies' => core_choices}
-groups << {'name' => 'Microsoft', 'type' => 'select', 'proxies' => core_direct_choices}
-groups << {'name' => 'GitHub', 'type' => 'select', 'proxies' => core_direct_choices}
-groups << {'name' => 'PayPal', 'type' => 'select', 'proxies' => core_direct_choices}
-groups << {'name' => 'Link', 'type' => 'select', 'proxies' => (has_zerotrust ? ['ZeroTrust', 'PayPal', 'Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US'] : ['PayPal', 'Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US'])}
-groups << {'name' => 'Speedtest', 'type' => 'select', 'proxies' => (has_zerotrust ? ['ZeroTrust', 'DIRECT', 'Proxies', 'HK', 'JP', 'SG', 'TW', 'US'] : ['DIRECT', 'Proxies', 'HK', 'JP', 'SG', 'TW', 'US'])}
+groups << {'name' => 'Spotify', 'type' => 'select', 'proxies' => ['Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US']}
+groups << {'name' => 'Steam', 'type' => 'select', 'proxies' => ['Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US']}
+groups << {'name' => 'Telegram', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
+groups << {'name' => 'Microsoft', 'type' => 'select', 'proxies' => ['Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US']}
+groups << {'name' => 'GitHub', 'type' => 'select', 'proxies' => ['Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US']}
+groups << {'name' => 'PayPal', 'type' => 'select', 'proxies' => ['Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US']}
+groups << {'name' => 'Link', 'type' => 'select', 'proxies' => ['PayPal', 'Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US']}
+groups << {'name' => 'Speedtest', 'type' => 'select', 'proxies' => ['DIRECT', 'Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
 %w[HK JP SG TW US].each do |region|
   groups << {'name' => region, 'type' => 'select', 'proxies' => region_names[region]}
 end

@@ -183,43 +183,6 @@ OpenClash 在处理配置时会自动调用：
 
 ---
 
-## Zero Trust / WARP（OpenClash）
-
-可选支持 `WARP-ZT` 节点（WireGuard）+ 上游机场链式出站（`dialer-proxy`）。
-
-### 设计原则
-
-- 公开仓库不保存私钥与 token；
-- 只有当订阅或本地配置中存在名为 `WARP-ZT` 的节点时，覆写脚本才会自动生成 `ZeroTrust` 策略组，并把它加入常用业务分组候选；
-- 若不存在 `WARP-ZT` 节点，分组行为保持原样，不影响普通用户。
-
-### 建议的私有节点写法（放在路由器本地，不提交仓库）
-
-```yaml
-- name: WARP-ZT
-  type: wireguard
-  ip: 172.16.x.x
-  ipv6: 2606:4700:xxxx::x
-  private-key: <private_key>
-  server: engage.cloudflareclient.com
-  port: 2408
-  public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
-  allowed-ips: ["0.0.0.0/0", "::/0"]
-  reserved: [110,128,188]
-  mtu: 1280
-  udp: true
-  dialer-proxy: Proxies
-```
-
-### 故障排查
-
-- 先确认上游机场支持 UDP；
-- `mtu` 可尝试 `1280 -> 1240 -> 1200`；
-- 端口可尝试 `2408 / 500 / 1701 / 4500`；
-- 若在中国大陆移动网络直连失败但家宽可用，通常属于网络环境差异与链式转发限制。
-
----
-
 ## 隐私与公开仓库规则
 
 本仓库默认是 **公开版**，必须保持脱敏：
