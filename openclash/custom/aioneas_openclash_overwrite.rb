@@ -5,43 +5,12 @@ config_file = ARGV[0]
 raise 'missing config path' if config_file.nil? || config_file.empty?
 raise "config not found: #{config_file}" unless File.exist?(config_file)
 
-value = YAML.safe_load(File.read(config_file), aliases: true)
+value = YAML.load_file(config_file)
 value ||= {}
 
 all_proxy_names = Array(value['proxies']).filter_map do |proxy|
   name = proxy.is_a?(Hash) ? proxy['name'] : nil
   name if name.is_a?(String) && !name.empty?
-end
-
-# Optional private WARP-ZT node injection (router-local only, not committed in public repo)
-# Expected file: /etc/openclash/custom/aioneas_warp_zt.yaml
-private_warp_file = '/etc/openclash/custom/aioneas_warp_zt.yaml'
-if File.exist?(private_warp_file)
-  begin
-    warp_data = YAML.load_file(private_warp_file)
-    warp_list = if warp_data.is_a?(Array)
-      warp_data
-    elsif warp_data.is_a?(Hash) && warp_data['proxies'].is_a?(Array)
-      warp_data['proxies']
-    else
-      []
-    end
-
-    warp_list.each do |p|
-      next unless p.is_a?(Hash)
-      next unless p['name'].is_a?(String) && !p['name'].empty?
-      value['proxies'] ||= []
-      exists = Array(value['proxies']).any? { |x| x.is_a?(Hash) && x['name'] == p['name'] }
-      value['proxies'] << p unless exists
-    end
-
-    all_proxy_names = Array(value['proxies']).filter_map do |proxy|
-      name = proxy.is_a?(Hash) ? proxy['name'] : nil
-      name if name.is_a?(String) && !name.empty?
-    end
-  rescue StandardError => e
-    warn "warn: failed to load #{private_warp_file}: #{e.message}"
-  end
 end
 
 region_patterns = {
