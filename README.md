@@ -71,6 +71,9 @@ README.md
   - `GitHub`
   - `PayPal`
   - `Link`
+  - `Economist`
+  - `NewYorkTimes`
+  - `Caixin`
   - `Speedtest`
 
 ---

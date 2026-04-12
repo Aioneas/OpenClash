@@ -62,6 +62,15 @@ proxy-groups:
   - name: Link
     type: select
     proxies: [PayPal, Proxies, DIRECT, HK, JP, SG, TW, US]
+  - name: Economist
+    type: select
+    proxies: [SG, Proxies, HK, JP, TW, US, DIRECT]
+  - name: NewYorkTimes
+    type: select
+    proxies: [SG, Proxies, HK, JP, TW, US, DIRECT]
+  - name: Caixin
+    type: select
+    proxies: [SG, Proxies, HK, JP, TW, US, DIRECT]
   - name: Speedtest
     type: select
     proxies: [DIRECT, Proxies, HK, JP, SG, TW, US]

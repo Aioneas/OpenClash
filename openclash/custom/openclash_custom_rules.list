@@ -1,7 +1,6 @@
 rules:
   - DOMAIN,a.115cdn.de,DIRECT # 115线路二直连
   - DOMAIN-SUFFIX,115cdn.de,DIRECT # 115全域名后缀直连
-  - RULE-SET,Apple,Apple
   - RULE-SET,YouTube,YouTube
   - RULE-SET,Disney,Disney
   - RULE-SET,HBOMax,HBOMax
@@ -18,6 +17,10 @@ rules:
   - RULE-SET,Claude,Claude
   - RULE-SET,PayPal,PayPal
   - RULE-SET,Link,Link
+  - RULE-SET,Economist,Economist
+  - RULE-SET,NewYorkTimes,NewYorkTimes
+  - RULE-SET,Caixin,Caixin
+  - RULE-SET,Apple,Apple
   - RULE-SET,Speedtest,Speedtest
   - RULE-SET,Global,Proxies
   - RULE-SET,Pixiv,JP
