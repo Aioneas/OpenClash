@@ -1,46 +1,99 @@
 # 维护说明
 
-## 后续新增 Surge 分流时怎么同步到 OpenClash
+## 已固化的运行约定
 
-### 情况 1：只是新增规则
+当前 OpenClash 方案已经固定为：
+
+- OpenClash 继续使用原始订阅拉节点
+- `enable_custom_clash_rules` 必须保持为 `0`
+- LuCI 后台的 `rule_provider_config` / `rule_providers` 保持为空
+- 只允许 `/etc/openclash/custom/openclash_custom_overwrite.sh` + `aioneas_openclash_overwrite.rb` 负责最终分流生成
+
+这意味着：
+
+> **订阅负责提供节点，Ruby 覆写负责重建最终分流。**
+
+## 为什么要这样约定
+
+如果重新打开 `enable_custom_clash_rules=1`，或者在 LuCI 后台追加了零散的 rule-provider / 规则集，OpenClash 会先尝试把这些规则注入到基础配置里。
+
+但此时 Ruby 还没有开始重建 `proxy-groups`，就容易出现：
+
+- `因未找到对应的策略组或代理`
+- `MATCH,Final` 被跳过
+- `RULE-SET,OpenAI,OpenAI` 被跳过
+- 残留 `AI Suite` 一类历史配置反复报警
+
+因此，后续不要把分流逻辑拆成“后台零散维护 + 仓库覆写”两套入口，统一只走仓库覆写。
+
+## Surge → OpenClash 同步 checklist
+
+### A. 只调整规则顺序
 
 直接修改：
 
 - `openclash/custom/openclash_custom_rules.list`
 
-说明：
+适用场景：
 
-- 若只是调整规则顺序、增删某个 `RULE-SET` 的位置，改这里；
-- 若规则内容本身需要打补丁，优先回到 `Aioneas/Surge` 的自托管规则主源修改；
-- 只有 OpenClash 专属逻辑，才直接写进这里。
+- 调整某个 `RULE-SET` 顺序
+- 增删某个已有分组对应的规则
+- 调整 `MATCH,Final`、`GEOIP,CN,DIRECT` 等兜底位置
 
-### 情况 2：新增独立服务规则集
+### B. 规则内容主源变更
 
-按顺序操作：
+如果只是某个规则集内容变了：
 
-1. 优先在 `Aioneas/Surge` 维护主规则源（如 `List/apple.list` / `List/apple.clash.yaml`）
-2. 在 `ruleset/` 新增 `XXX.yaml` 仅用于 OpenClash 专属规则时再单独放这里
-3. 在 `openclash/custom/aioneas_openclash_overwrite.rb` 增加对应 `rule-provider`
-4. 在 `openclash/custom/openclash_custom_rules.list` 插入：
-   - `RULE-SET,XXX,对应分组`
-5. 运行：
-   - `./scripts/validate_repo.sh`
-   - `./scripts/sync_to_router.sh <ip> <user> <password>`
+1. 优先修改 `Aioneas/Surge/List/*.list`
+2. 如需 Clash 版同步，确保 `*.clash.yaml` 一并更新
+3. 若 OpenClash 侧 provider 名称不变，通常不需要改 Ruby 覆写脚本
 
-### 情况 3：新增独立策略组
+### C. 新增独立服务 / 独立策略组
 
-例如 Surge 新增：
+如果 Surge 新增了一个独立分组（如 `Gemini` / `Perplexity` / `News` / `Reddit`），至少同步以下几处：
 
-- Gemini
-- Perplexity
-- News
-- Reddit
+1. `Aioneas/Surge`：补主规则源
+2. `openclash/custom/aioneas_openclash_overwrite.rb`：补 `proxy-group`
+3. `openclash/custom/aioneas_openclash_overwrite.rb`：补 `rule-provider`
+4. `openclash/custom/openclash_custom_rules.list`：补 `RULE-SET`
+5. `public/openclash.public.reference.yaml`：补公开参考分组
+6. `docs/rule-providers.csv`：补规则映射
+7. `README.md` / `docs/MAINTENANCE.md`：补文档说明
 
-则需要同时改三处：
+### D. 仅 OpenClash 专属逻辑
 
-1. `aioneas_openclash_overwrite.rb`：新增 `proxy-group`
-2. `aioneas_openclash_overwrite.rb`：新增 `rule-provider`
-3. `openclash_custom_rules.list`：新增 `RULE-SET`
+只有当某条逻辑不适合落回 `Aioneas/Surge` 主规则源时，才考虑：
+
+- 直接写进 `openclash_custom_rules.list`
+- 或在 `ruleset/` 下维护仅供 OpenClash 使用的补充规则
+
+默认优先避免分叉维护。
+
+## 发布 / 同步流程
+
+每次修改建议固定按这个顺序：
+
+1. `./scripts/validate_repo.sh`
+2. `git commit`
+3. `git push`
+4. `./scripts/sync_to_router.sh <ip> <user> <password>`
+5. 查看 OpenClash 运行日志
+
+## 启动后验收
+
+同步并重启后，至少确认：
+
+- 日志出现：
+  - `Tip: Start Running Aioneas OpenClash Custom Overwrite...`
+  - `Info: Aioneas OpenClash overwrite applied successfully.`
+  - `OpenClash Start Successful!`
+- 不再出现：
+  - `因未找到对应的策略组或代理`
+  - `AI Suite`
+- 最终 `clash.yaml` 中能看到：
+  - 新增的 `proxy-groups`
+  - 新增的 `rule-providers`
+  - 新增的 `RULE-SET`
 
 ## 公开仓库提交前检查
 
