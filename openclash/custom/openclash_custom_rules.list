@@ -15,6 +15,7 @@ rules:
   - RULE-SET,GitHub,GitHub
   - RULE-SET,OpenAI,OpenAI
   - RULE-SET,Claude,Claude
+  - RULE-SET,DeepSeek,DeepSeek
   - RULE-SET,PayPal,PayPal
   - RULE-SET,Link,Link
   - RULE-SET,Economist,Economist

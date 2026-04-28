@@ -40,6 +40,7 @@ groups << {'name' => 'Google', 'type' => 'select', 'proxies' => ['Proxies', 'HK'
 groups << {'name' => 'Apple', 'type' => 'select', 'proxies' => ['Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US']}
 groups << {'name' => 'OpenAI', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
 groups << {'name' => 'Claude', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
+groups << {'name' => 'DeepSeek', 'type' => 'select', 'proxies' => ['Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US']}
 groups << {'name' => 'YouTube', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
 groups << {'name' => 'Netflix', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
 groups << {'name' => 'Disney', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
@@ -77,6 +78,7 @@ value['rule-providers'] = {
   'GitHub' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/GitHub.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/github.clash.yaml','interval'=>86400},
   'OpenAI' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/OpenAI.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/openai.clash.yaml','interval'=>86400},
   'Claude' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Claude.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/claude.clash.yaml','interval'=>86400},
+  'DeepSeek' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/DeepSeek.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/deepseek.clash.yaml','interval'=>86400},
   'PayPal' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/PayPal.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/paypal.clash.yaml','interval'=>86400},
   'Link' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Link.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/link.clash.yaml','interval'=>86400},
   'Economist' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Economist.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/economist.clash.yaml','interval'=>86400},
