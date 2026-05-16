@@ -54,6 +54,8 @@ groups << {'name' => 'Microsoft', 'type' => 'select', 'proxies' => ['Proxies', '
 groups << {'name' => 'GitHub', 'type' => 'select', 'proxies' => ['Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US']}
 groups << {'name' => 'PayPal', 'type' => 'select', 'proxies' => ['Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US']}
 groups << {'name' => 'Link', 'type' => 'select', 'proxies' => ['PayPal', 'Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US']}
+groups << {'name' => 'WeChat', 'type' => 'select', 'proxies' => ['DIRECT', 'HK', 'Proxies', 'JP', 'SG', 'TW', 'US']}
+groups << {'name' => 'WSJ', 'type' => 'select', 'proxies' => ['HK', 'Proxies', 'JP', 'SG', 'TW', 'US']}
 groups << {'name' => 'Economist', 'type' => 'select', 'proxies' => ['SG', 'Proxies', 'HK', 'JP', 'TW', 'US', 'DIRECT']}
 groups << {'name' => 'NewYorkTimes', 'type' => 'select', 'proxies' => ['SG', 'Proxies', 'HK', 'JP', 'TW', 'US', 'DIRECT']}
 groups << {'name' => 'Caixin', 'type' => 'select', 'proxies' => ['SG', 'Proxies', 'HK', 'JP', 'TW', 'US', 'DIRECT']}
@@ -81,6 +83,8 @@ value['rule-providers'] = {
   'DeepSeek' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/DeepSeek.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/deepseek.clash.yaml','interval'=>86400},
   'PayPal' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/PayPal.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/paypal.clash.yaml','interval'=>86400},
   'Link' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Link.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/link.clash.yaml','interval'=>86400},
+  'WeChat' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/WeChat.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/wechat.clash.yaml','interval'=>86400},
+  'WSJ' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/WSJ.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/wsj.clash.yaml','interval'=>86400},
   'Economist' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Economist.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/economist.clash.yaml','interval'=>86400},
   'NewYorkTimes' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/NewYorkTimes.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/newyorktimes.clash.yaml','interval'=>86400},
   'Caixin' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Caixin.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/caixin.clash.yaml','interval'=>86400},

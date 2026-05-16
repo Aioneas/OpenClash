@@ -18,6 +18,8 @@ rules:
   - RULE-SET,DeepSeek,DeepSeek
   - RULE-SET,PayPal,PayPal
   - RULE-SET,Link,Link
+  - RULE-SET,WeChat,WeChat
+  - RULE-SET,WSJ,WSJ
   - RULE-SET,Economist,Economist
   - RULE-SET,NewYorkTimes,NewYorkTimes
   - RULE-SET,Caixin,Caixin

@@ -62,6 +62,12 @@ proxy-groups:
   - name: Link
     type: select
     proxies: [PayPal, Proxies, DIRECT, HK, JP, SG, TW, US]
+  - name: WeChat
+    type: select
+    proxies: [DIRECT, HK, Proxies, JP, SG, TW, US]
+  - name: WSJ
+    type: select
+    proxies: [HK, Proxies, JP, SG, TW, US]
   - name: Economist
     type: select
     proxies: [SG, Proxies, HK, JP, TW, US, DIRECT]
