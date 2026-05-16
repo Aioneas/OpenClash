@@ -1,6 +1,4 @@
 rules:
-  - DOMAIN,a.115cdn.de,DIRECT # 115线路二直连
-  - DOMAIN-SUFFIX,115cdn.de,DIRECT # 115全域名后缀直连
   - RULE-SET,YouTube,YouTube
   - RULE-SET,Disney,Disney
   - RULE-SET,HBOMax,HBOMax
