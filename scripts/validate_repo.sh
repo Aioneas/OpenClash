@@ -56,9 +56,10 @@ grep -q 'MATCH,Final' openclash/custom/openclash_custom_rules.list
 echo "[5/5] public config safety smoke check"
 # Only block obvious secret-looking strings in executable/config files. Documentation often
 # contains words like "subscription" as part of the operating instructions.
-if grep -RInE 'token|password|passwd|secret|authorization|bearer|api[_-]?key|private[_-]?key' \
-  openclash public scripts \
+if grep -RInE \
   --exclude='validate_repo.sh' \
+  'token|password|passwd|secret|authorization|bearer|api[_-]?key|private[_-]?key' \
+  openclash public scripts \
   >/tmp/openclash_public_safety_matches.$$; then
   echo "potential sensitive terms found in public config/script files; review these matches:"
   cat /tmp/openclash_public_safety_matches.$$
