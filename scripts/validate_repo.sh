@@ -42,10 +42,26 @@ for name in $required_providers; do
   }
 done
 
-required_groups="Proxies Final Google Apple OpenAI Claude DeepSeek YouTube Netflix Disney HBOMax Bahamut BiliBili Spotify Steam Telegram Microsoft GitHub PayPal Link WeChat WSJ Economist NewYorkTimes Caixin Speedtest HK JP SG TW US"
-for name in $required_groups; do
+required_static_groups="Proxies Final Google Apple OpenAI Claude DeepSeek YouTube Netflix Disney HBOMax Bahamut BiliBili Spotify Steam Telegram Microsoft GitHub PayPal Link WeChat WSJ Economist NewYorkTimes Caixin Speedtest"
+for name in $required_static_groups; do
   grep -q "'name' => '$name'" openclash/custom/aioneas_openclash_overwrite.rb || {
     echo "missing proxy-group in overwrite script: $name"
+    exit 1
+  }
+done
+
+required_region_groups="HK JP SG TW US PH"
+grep -q "'name' => region" openclash/custom/aioneas_openclash_overwrite.rb || {
+  echo "missing dynamic region proxy-group factory"
+  exit 1
+}
+for name in $required_region_groups; do
+  grep -q "'$name' => /" openclash/custom/aioneas_openclash_overwrite.rb || {
+    echo "missing region pattern in overwrite script: $name"
+    exit 1
+  }
+  grep -q "%w\\[[^]]*$name[^]]*\\]" openclash/custom/aioneas_openclash_overwrite.rb || {
+    echo "missing region proxy-group in dynamic list: $name"
     exit 1
   }
 done

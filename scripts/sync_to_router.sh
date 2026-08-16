@@ -2,7 +2,7 @@
 set -eu
 
 if [ "$#" -lt 3 ]; then
-  echo "Usage: $0 <router_ip> <ssh_user> <ssh_password>"
+  echo "Usage: $0 <router_ip> <ssh_user> <ssh_pass>"
   exit 1
 fi
 

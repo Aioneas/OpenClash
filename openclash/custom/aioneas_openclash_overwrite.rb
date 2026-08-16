@@ -8,22 +8,23 @@ raise "config not found: #{config_file}" unless File.exist?(config_file)
 value = YAML.load_file(config_file)
 value ||= {}
 
-all_proxy_names = Array(value['proxies']).filter_map do |proxy|
+all_proxy_names = Array(value['proxies']).map do |proxy|
   name = proxy.is_a?(Hash) ? proxy['name'] : nil
   name if name.is_a?(String) && !name.empty?
-end
+end.compact
 
 region_patterns = {
   'HK' => /(🇭🇰|香港|Hong|HK)/i,
   'US' => /(🇺🇸|美国|States|US)/i,
   'JP' => /(🇯🇵|日本|Japan|JP)/i,
   'TW' => /(🇹🇼|台湾|台灣|Taiwan|TW|🇨🇳 台湾)/i,
-  'SG' => /(🇸🇬|新加坡|Singapore|SG)/i
+  'SG' => /(🇸🇬|新加坡|Singapore|SG)/i,
+  'PH' => /(🇵🇭|菲律宾|菲律賓|Philippines|PH)/i
 }
 
 region_names = {}
 region_patterns.each do |region, pattern|
-  nodes = all_proxy_names.select { |name| name.match?(pattern) }
+  nodes = all_proxy_names.select { |name| name =~ pattern }
   nodes = all_proxy_names.dup if nodes.empty?
   nodes = ['DIRECT'] if nodes.empty?
   region_names[region] = nodes.uniq
@@ -33,7 +34,7 @@ groups = []
 groups << {
   'name' => 'Proxies',
   'type' => 'select',
-  'proxies' => (['HK', 'JP', 'SG', 'TW', 'US'] + all_proxy_names).uniq
+  'proxies' => (['HK', 'JP', 'SG', 'TW', 'US', 'PH'] + all_proxy_names).uniq
 }
 groups << {'name' => 'Final', 'type' => 'select', 'proxies' => ['Proxies', 'DIRECT']}
 groups << {'name' => 'Google', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
@@ -47,7 +48,7 @@ groups << {'name' => 'Disney', 'type' => 'select', 'proxies' => ['Proxies', 'HK'
 groups << {'name' => 'HBOMax', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
 groups << {'name' => 'Bahamut', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'TW']}
 groups << {'name' => 'BiliBili', 'type' => 'select', 'proxies' => ['DIRECT', 'HK', 'TW']}
-groups << {'name' => 'Spotify', 'type' => 'select', 'proxies' => ['Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US']}
+groups << {'name' => 'Spotify', 'type' => 'select', 'proxies' => ['PH', 'Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US']}
 groups << {'name' => 'Steam', 'type' => 'select', 'proxies' => ['Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US']}
 groups << {'name' => 'Telegram', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
 groups << {'name' => 'Microsoft', 'type' => 'select', 'proxies' => ['Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US']}
@@ -60,7 +61,7 @@ groups << {'name' => 'Economist', 'type' => 'select', 'proxies' => ['SG', 'Proxi
 groups << {'name' => 'NewYorkTimes', 'type' => 'select', 'proxies' => ['SG', 'Proxies', 'HK', 'JP', 'TW', 'US', 'DIRECT']}
 groups << {'name' => 'Caixin', 'type' => 'select', 'proxies' => ['SG', 'Proxies', 'HK', 'JP', 'TW', 'US', 'DIRECT']}
 groups << {'name' => 'Speedtest', 'type' => 'select', 'proxies' => ['DIRECT', 'Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
-%w[HK JP SG TW US].each do |region|
+%w[HK JP SG TW US PH].each do |region|
   groups << {'name' => region, 'type' => 'select', 'proxies' => region_names[region]}
 end
 value['proxy-groups'] = groups

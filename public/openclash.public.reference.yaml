@@ -7,7 +7,7 @@ proxies: []
 proxy-groups:
   - name: Proxies
     type: select
-    proxies: [HK, JP, SG, TW, US]
+    proxies: [HK, JP, SG, TW, US, PH]
   - name: Final
     type: select
     proxies: [Proxies, DIRECT]
@@ -43,7 +43,7 @@ proxy-groups:
     proxies: [DIRECT, HK, TW]
   - name: Spotify
     type: select
-    proxies: [Proxies, DIRECT, HK, JP, SG, TW, US]
+    proxies: [PH, Proxies, DIRECT, HK, JP, SG, TW, US]
   - name: Steam
     type: select
     proxies: [Proxies, DIRECT, HK, JP, SG, TW, US]
@@ -93,5 +93,8 @@ proxy-groups:
     type: select
     proxies: [DIRECT]
   - name: US
+    type: select
+    proxies: [DIRECT]
+  - name: PH
     type: select
     proxies: [DIRECT]
