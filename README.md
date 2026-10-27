@@ -32,6 +32,7 @@ scripts/
   sync_to_router.sh                    # 一键同步到路由器
 public/
   openclash.public.reference.yaml      # 脱敏参考配置
+  f50-policy-icons.reference.yaml      # F50 策略组图标映射（不含私人配置）
 README.md
 ```
 
@@ -57,6 +58,8 @@ README.md
   - `Final`
   - `Google`
   - `Apple`
+  - `X`
+  - `Grok`（含 Grok Bot 的共享服务地址）
   - `OpenAI`
   - `Claude`
   - `YouTube`
@@ -123,6 +126,8 @@ README.md
 > **保留原订阅拉节点，只用 Ruby 覆写重建分流。**
 
 ### 4. 将本仓库的自定义文件同步到路由器
+
+仓库更新不会自动安装到路由器：回到家后需要同步自定义文件并重启 OpenClash，再验证规则与图标。`Grok` 包含部分 Cursor 共用服务地址，这些地址也会跟随 Grok 策略。
 
 需要同步到：
 

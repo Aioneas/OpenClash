@@ -39,6 +39,8 @@ groups << {
 groups << {'name' => 'Final', 'type' => 'select', 'proxies' => ['Proxies', 'DIRECT']}
 groups << {'name' => 'Google', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
 groups << {'name' => 'Apple', 'type' => 'select', 'proxies' => ['Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US']}
+groups << {'name' => 'X', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
+groups << {'name' => 'Grok', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
 groups << {'name' => 'OpenAI', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
 groups << {'name' => 'Claude', 'type' => 'select', 'proxies' => ['Proxies', 'HK', 'JP', 'SG', 'TW', 'US']}
 groups << {'name' => 'DeepSeek', 'type' => 'select', 'proxies' => ['Proxies', 'DIRECT', 'HK', 'JP', 'SG', 'TW', 'US']}
@@ -64,6 +66,44 @@ groups << {'name' => 'Speedtest', 'type' => 'select', 'proxies' => ['DIRECT', 'P
 %w[HK JP SG TW US PH].each do |region|
   groups << {'name' => region, 'type' => 'select', 'proxies' => region_names[region]}
 end
+group_icons = {
+  "Proxies" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Global.png",
+  "Final" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Final.png",
+  "Google" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Google.png",
+  "Apple" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Apple.png",
+  "X" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/X.png",
+  "Grok" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Grok.png",
+  "OpenAI" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/ChatGPT.png",
+  "Claude" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/claude.png",
+  "DeepSeek" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/DeepSeek.png?v=20260428a",
+  "YouTube" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/YouTube.png",
+  "Netflix" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Netflix.png",
+  "Disney" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Disney.png",
+  "HBOMax" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/HBO.png",
+  "Bahamut" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Bahamut.png",
+  "BiliBili" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/bilibili_3.png",
+  "Spotify" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Spotify.png",
+  "Steam" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Steam.png",
+  "Telegram" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Telegram.png",
+  "Microsoft" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Microsoft.png",
+  "GitHub" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/GitHub.png",
+  "PayPal" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/PayPal.png",
+  "Link" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Link.png",
+  "WeChat" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/WeChat_AppStore.png?v=20260516f",
+  "WSJ" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/WSJ_AppStore.png?v=20260516f",
+  "Economist" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Economist.png?v=20260411b",
+  "NewYorkTimes" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/NewYorkTimes.png?v=20260411b",
+  "Caixin" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Caixin.png?v=20260411a",
+  "Speedtest" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Speedtest.png",
+  "HK" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Hong_Kong.png",
+  "US" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/United_States.png",
+  "JP" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Japan.png",
+  "TW" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Taiwan.png",
+  "SG" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Singapore.png",
+  "PH" => "https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Philippines.png",
+}
+groups.each { |group| group['icon'] = group_icons.fetch(group['name']) }
+
 value['proxy-groups'] = groups
 
 value['rule-providers'] = {
@@ -79,6 +119,8 @@ value['rule-providers'] = {
   'Google' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Google.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/google.clash.yaml','interval'=>86400},
   'Microsoft' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Microsoft.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/microsoft.clash.yaml','interval'=>86400},
   'GitHub' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/GitHub.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/github.clash.yaml','interval'=>86400},
+  'X' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/X.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/x.clash.yaml','interval'=>86400},
+  'Grok' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Grok.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/grok-service.clash.yaml','interval'=>86400},
   'OpenAI' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/OpenAI.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/openai.clash.yaml','interval'=>86400},
   'Claude' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Claude.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/claude.clash.yaml','interval'=>86400},
   'DeepSeek' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/DeepSeek.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/deepseek.clash.yaml','interval'=>86400},

@@ -13,7 +13,9 @@ for f in \
   openclash/custom/aioneas_openclash_overwrite.rb \
   openclash/custom/openclash_custom_rules.list \
   openclash/custom/openclash_custom_rules_2.list \
-  public/openclash.public.reference.yaml
+  public/openclash.public.reference.yaml \
+  public/f50-policy-icons.reference.yaml \
+  tests/test_overwrite.rb
  do
   [ -f "$f" ] || { echo "missing: $f"; exit 1; }
  done
@@ -24,12 +26,13 @@ sh -n openclash/custom/openclash_custom_overwrite.sh
 echo "[3/5] ruby syntax"
 if command -v ruby >/dev/null 2>&1; then
   ruby -c openclash/custom/aioneas_openclash_overwrite.rb
+  ruby tests/test_overwrite.rb
 else
   echo "skip ruby syntax: ruby not installed locally"
 fi
 
 echo "[4/5] rule-provider and rule consistency"
-required_providers="YouTube Disney HBOMax Netflix Bahamut BiliBili Spotify Steam Telegram Google Microsoft GitHub OpenAI Claude DeepSeek PayPal Link WeChat WSJ Economist NewYorkTimes Caixin Apple Speedtest Global Pixiv China Lan"
+required_providers="X Grok YouTube Disney HBOMax Netflix Bahamut BiliBili Spotify Steam Telegram Google Microsoft GitHub OpenAI Claude DeepSeek PayPal Link WeChat WSJ Economist NewYorkTimes Caixin Apple Speedtest Global Pixiv China Lan"
 
 for name in $required_providers; do
   grep -q "'$name' =>" openclash/custom/aioneas_openclash_overwrite.rb || {
@@ -42,7 +45,7 @@ for name in $required_providers; do
   }
 done
 
-required_static_groups="Proxies Final Google Apple OpenAI Claude DeepSeek YouTube Netflix Disney HBOMax Bahamut BiliBili Spotify Steam Telegram Microsoft GitHub PayPal Link WeChat WSJ Economist NewYorkTimes Caixin Speedtest"
+required_static_groups="Proxies Final Google Apple X Grok OpenAI Claude DeepSeek YouTube Netflix Disney HBOMax Bahamut BiliBili Spotify Steam Telegram Microsoft GitHub PayPal Link WeChat WSJ Economist NewYorkTimes Caixin Speedtest"
 for name in $required_static_groups; do
   grep -q "'name' => '$name'" openclash/custom/aioneas_openclash_overwrite.rb || {
     echo "missing proxy-group in overwrite script: $name"

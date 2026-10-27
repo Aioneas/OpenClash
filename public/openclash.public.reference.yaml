@@ -6,95 +6,134 @@ ipv6: false
 proxies: []
 proxy-groups:
   - name: Proxies
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Global.png
     type: select
     proxies: [HK, JP, SG, TW, US, PH]
   - name: Final
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Final.png
     type: select
     proxies: [Proxies, DIRECT]
   - name: Google
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Google.png
     type: select
     proxies: [Proxies, HK, JP, SG, TW, US]
   - name: Apple
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Apple.png
     type: select
     proxies: [Proxies, DIRECT, HK, JP, SG, TW, US]
+  - name: X
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/X.png
+    type: select
+    proxies: [Proxies, HK, JP, SG, TW, US]
+  - name: Grok
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Grok.png
+    type: select
+    proxies: [Proxies, HK, JP, SG, TW, US]
   - name: OpenAI
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/ChatGPT.png
     type: select
     proxies: [Proxies, HK, JP, SG, TW, US]
   - name: Claude
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/claude.png
     type: select
     proxies: [Proxies, HK, JP, SG, TW, US]
   - name: YouTube
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/YouTube.png
     type: select
     proxies: [Proxies, HK, JP, SG, TW, US]
   - name: Netflix
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Netflix.png
     type: select
     proxies: [Proxies, HK, JP, SG, TW, US]
   - name: Disney
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Disney.png
     type: select
     proxies: [Proxies, HK, JP, SG, TW, US]
   - name: HBOMax
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/HBO.png
     type: select
     proxies: [Proxies, HK, JP, SG, TW, US]
   - name: Bahamut
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Bahamut.png
     type: select
     proxies: [Proxies, HK, TW]
   - name: BiliBili
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/bilibili_3.png
     type: select
     proxies: [DIRECT, HK, TW]
   - name: Spotify
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Spotify.png
     type: select
     proxies: [PH, Proxies, DIRECT, HK, JP, SG, TW, US]
   - name: Steam
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Steam.png
     type: select
     proxies: [Proxies, DIRECT, HK, JP, SG, TW, US]
   - name: Telegram
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Telegram.png
     type: select
     proxies: [Proxies, HK, JP, SG, TW, US]
   - name: Microsoft
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Microsoft.png
     type: select
     proxies: [Proxies, DIRECT, HK, JP, SG, TW, US]
   - name: GitHub
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/GitHub.png
     type: select
     proxies: [Proxies, DIRECT, HK, JP, SG, TW, US]
   - name: PayPal
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/PayPal.png
     type: select
     proxies: [Proxies, DIRECT, HK, JP, SG, TW, US]
   - name: Link
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Link.png
     type: select
     proxies: [PayPal, Proxies, DIRECT, HK, JP, SG, TW, US]
   - name: WeChat
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/WeChat_AppStore.png?v=20260516f
     type: select
     proxies: [DIRECT, HK, Proxies, JP, SG, TW, US]
   - name: WSJ
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/WSJ_AppStore.png?v=20260516f
     type: select
     proxies: [HK, Proxies, JP, SG, TW, US]
   - name: Economist
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Economist.png?v=20260411b
     type: select
     proxies: [SG, Proxies, HK, JP, TW, US, DIRECT]
   - name: NewYorkTimes
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/NewYorkTimes.png?v=20260411b
     type: select
     proxies: [SG, Proxies, HK, JP, TW, US, DIRECT]
   - name: Caixin
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Caixin.png?v=20260411a
     type: select
     proxies: [SG, Proxies, HK, JP, TW, US, DIRECT]
   - name: Speedtest
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Speedtest.png
     type: select
     proxies: [DIRECT, Proxies, HK, JP, SG, TW, US]
   - name: HK
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Hong_Kong.png
     type: select
     proxies: [DIRECT]
   - name: JP
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Japan.png
     type: select
     proxies: [DIRECT]
   - name: SG
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Singapore.png
     type: select
     proxies: [DIRECT]
   - name: TW
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Taiwan.png
     type: select
     proxies: [DIRECT]
   - name: US
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/United_States.png
     type: select
     proxies: [DIRECT]
   - name: PH
+    icon: https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/Philippines.png
     type: select
     proxies: [DIRECT]

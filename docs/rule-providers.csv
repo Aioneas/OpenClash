@@ -12,6 +12,8 @@ Telegram,https://raw.githubusercontent.com/Aioneas/Surge/main/List/telegram.list
 Google,https://raw.githubusercontent.com/Aioneas/Surge/main/List/google.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/google.clash.yaml,Google
 Microsoft,https://raw.githubusercontent.com/Aioneas/Surge/main/List/microsoft.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/microsoft.clash.yaml,Microsoft
 GitHub,https://raw.githubusercontent.com/Aioneas/Surge/main/List/github.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/github.clash.yaml,GitHub
+X,https://raw.githubusercontent.com/Aioneas/Surge/main/List/x.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/x.clash.yaml,X
+Grok,https://raw.githubusercontent.com/Aioneas/Surge/main/List/grok-service.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/grok-service.clash.yaml,Grok
 OpenAI,https://raw.githubusercontent.com/Aioneas/Surge/main/List/openai.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/openai.clash.yaml,OpenAI
 Claude,https://raw.githubusercontent.com/Aioneas/Surge/main/List/claude.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/claude.clash.yaml,Claude
 PayPal,https://raw.githubusercontent.com/Aioneas/Surge/main/List/paypal.list,https://raw.githubusercontent.com/Aioneas/Surge/main/List/paypal.clash.yaml,PayPal
