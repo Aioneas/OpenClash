@@ -34,6 +34,7 @@ OpenClash can also append rules from LuCI settings, but mixing LuCI-side custom 
 - LuCI custom rule-provider append fields are empty
 - Subscription provides nodes only
 - Ruby overwrite creates the final `proxy-groups`, `rule-providers`, and `rules`
+- When OpenClash supplies the `oc-cn-domain` provider for its Fake-IP filter, the overwrite preserves that provider so the DNS reference remains valid. It is not added when absent.
 
 This avoids warnings where OpenClash sees a `RULE-SET` before the target policy group has been created.
 

@@ -106,6 +106,8 @@ groups.each { |group| group['icon'] = group_icons.fetch(group['name']) }
 
 value['proxy-groups'] = groups
 
+openclash_cn_provider = value.dig('rule-providers', 'oc-cn-domain')
+
 value['rule-providers'] = {
   'YouTube' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/YouTube.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/youtube.clash.yaml','interval'=>86400},
   'Disney' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Disney.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/disney.clash.yaml','interval'=>86400},
@@ -138,6 +140,8 @@ value['rule-providers'] = {
   'China' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/China.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/china.clash.yaml','interval'=>86400},
   'Lan' => {'type'=>'http','behavior'=>'classical','path'=>'./rule_provider/Lan.yaml','url'=>'https://raw.githubusercontent.com/Aioneas/Surge/main/List/lan.clash.yaml','interval'=>86400}
 }
+
+value['rule-providers']['oc-cn-domain'] = openclash_cn_provider if openclash_cn_provider
 
 custom_rule_file = '/etc/openclash/custom/openclash_custom_rules.list'
 if File.exist?(custom_rule_file)

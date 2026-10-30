@@ -24,6 +24,7 @@ Dir.mktmpdir('openclash-test-') do |dir|
   raise 'node definitions changed' unless c['proxies'] == source['proxies']
   raise 'subscription definitions changed' unless c['proxy-providers'] == source['proxy-providers']
   raise 'DNS or IPv6 changed' unless c['dns'] == source['dns'] && c['ipv6'] == false
+  raise 'unexpected oc-cn-domain provider' if c.fetch('rule-providers').key?('oc-cn-domain')
   groups = c.fetch('proxy-groups').to_h { |g| [g.fetch('name'), g] }
   raise 'some groups lack icons' unless groups.values.all? { |g| g['icon'].to_s.start_with?('https://raw.githubusercontent.com/Aioneas/Surge/main/Icon/') }
   %w[X Grok].each do |name|
@@ -39,6 +40,24 @@ Dir.mktmpdir('openclash-test-') do |dir|
     _, provider, target = rule.split(',')
     raise "missing provider #{provider}" unless c.fetch('rule-providers').key?(provider)
     raise "missing target #{target}" unless groups.key?(target) || target == 'DIRECT'
+  end
+  cn_provider = {
+    'type' => 'http', 'interval' => 43_200, 'behavior' => 'domain', 'format' => 'mrs',
+    'url' => 'https://example.com/cn.mrs', 'path' => './rule_provider/oc-cn-domain.mrs'
+  }
+  dns_with_cn_filter = {'enable' => true, 'fake-ip-filter' => ['geosite:cn', 'rule-set:oc-cn-domain']}
+  with_cn_provider = source.merge(
+    'dns' => dns_with_cn_filter,
+    'rule-providers' => {'oc-cn-domain' => cn_provider, 'unrelated-old-provider' => {'type' => 'file'}}
+  )
+  File.write(path, YAML.dump(with_cn_provider))
+  2.times do
+    _, stderr, status = Open3.capture3(RbConfig.ruby, test_overwrite, path)
+    raise "overwrite with OpenClash DNS provider failed: #{stderr}" unless status.success?
+    result = YAML.load_file(path)
+    raise 'OpenClash DNS filter changed' unless result['dns'] == dns_with_cn_filter
+    raise 'OpenClash DNS provider changed or missing' unless result.fetch('rule-providers')['oc-cn-domain'] == cn_provider
+    raise 'unrelated old provider unexpectedly retained' if result.fetch('rule-providers').key?('unrelated-old-provider')
   end
   puts "OK: #{groups.size} groups, icons, rule priority, subscription and DNS preservation"
 end

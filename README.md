@@ -9,6 +9,7 @@
 - 节点仍然由你原来的 Clash 订阅提供；
 - OpenClash 继续使用原订阅链接自动更新；
 - 但最终运行时的 **代理组 / 规则 / rule-providers**，按你的 Surge / Sugar 逻辑重建。
+- 若 OpenClash 为 Fake-IP 过滤注入 `oc-cn-domain` 规则集，覆写时会保留它，避免 DNS 引用失效；未注入时不会额外创建。
 
 也就是说：
 
